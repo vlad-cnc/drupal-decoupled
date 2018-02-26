@@ -160,7 +160,6 @@
           .then(response => {
             this.responseArticle = response.data;
           });
-
       },
 
       // Article creation
