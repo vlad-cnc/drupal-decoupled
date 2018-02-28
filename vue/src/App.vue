@@ -22,6 +22,8 @@
   import Login from "./components/Login";
   import Taxonomy from "./components/Taxonomy";
   import Vue from 'Vue'
+  import Vuex from 'vuex'
+  Vue.use(Vuex);
 
   export default {
     components: {
