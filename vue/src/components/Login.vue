@@ -14,18 +14,6 @@
           <button @click="LogOut" class="logout-btn">Log Out</button>
         </div>
       </div>
-
-      <!--<div class="article-creation">-->
-        <!--<h3>Creat an article</h3>-->
-        <!--<label>Add a title:</label>-->
-        <!--<input type="text" name="title" v-model="articleData.data.attributes.title" />-->
-        <!--<br/>-->
-        <!--<label>Add a body:</label>-->
-        <!--<input type="text" name="body" v-model="articleData.data.attributes.body.value"/><br/>-->
-        <!--<button v-on:click="CreateArticle">Create Article</button>-->
-        <!--<button @click="setSessionData(sessionData.userName)">/Kaman</button>-->
-      <!--</div>-->
-
     </div>
 </template>
 
@@ -48,29 +36,15 @@
         name: '',
         pass: '',
         url: 'http://localhost:8200/user/login?_format=json',
-        articleUrl: 'http://localhost:8200/jsonapi/node/article?_format=json',
         url2: 'http://localhost:8200/oauth/token',
-        urlLogout: 'http://example.com/user/logout?_format=json',
+        // urlLogout: 'http://example.com/user/logout?_format=json',
         statusCheck: true,
-        // articleData: {
-        //   data: {
-        //     type: 'node--article',
-        //     attributes: {
-        //       title: '',
-        //       body: {
-        //         value: '',
-        //         format: 'plain_text'
-        //       },
-        //     }
-        //   }
-        // },
       }
     },
 
     methods:{
 
       LogIn(){
-
         //Prepare JSON data for RESTful
         let data = JSON.stringify({
           name: this.name,
@@ -138,7 +112,6 @@
 
       },
 
-
       ...mapMutations([
         'setSessionData',
       ]),
@@ -167,23 +140,6 @@
         //     this.responseArticle = response.data;
         //   });
       },
-
-      // Article creation
-      CreateArticle(){
-        let articleData = JSON.stringify(this.articleData);
-        let authorization = "Bearer "+this.accessToken;
-
-        axios.post(this.articleUrl, articleData, {
-            headers: {
-              "Accept": "application/vnd.api+json",
-              "Content-Type": "application/vnd.api+json",
-              "Authorization": authorization
-            }
-        })
-          .then(response => {
-            this.responseArticle = response.data;
-          });
-      }
     },
 
     created: function () {
