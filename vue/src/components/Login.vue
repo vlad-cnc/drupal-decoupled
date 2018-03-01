@@ -130,15 +130,6 @@
         this.sessionData.roles = '';
         this.sessionData.csrfToken = '';
         this.sessionData.logoutToken = '';
-
-        // axios.get(this.urlLogout, {
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   }
-        // })
-        //   .then(response => {
-        //     this.responseArticle = response.data;
-        //   });
       },
     },
 

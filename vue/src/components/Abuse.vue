@@ -5,9 +5,11 @@
         <div class="article-image">
           <img :src="findImage(article.field_image)"/>
           <img :src="api+article.field_image"/>
-          <!--{{article.field_image}}-->
         </div>
         <h3 class="article-title">{{article.Test}}</h3>
+        <div v-html="article.body" class="article-body">
+          {{article.body}}
+        </div>
       </div>
     </div>
   </div>
@@ -44,12 +46,6 @@
 
     methods: {
 
-      findImage(imageLink) {
-
-        let string = imageLink.substring(imageLink.lastIndexOf("src=\"/")+5,imageLink.lastIndexOf("jpg")+3);
-
-        return this.api+string;
-      },
     }
   }
 </script>
@@ -62,9 +58,11 @@
     display: flex;
     flex-direction: row;
     .article-preview {
+      padding: 5px;
+      box-sizing: border-box;
       background: #83bfd6;
       width: 100%;
-      height: 200px;
+      /*height: 200px;*/
       max-width: 200px;
       margin: 0 10px;
       img {
