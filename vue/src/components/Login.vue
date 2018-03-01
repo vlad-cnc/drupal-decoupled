@@ -37,7 +37,6 @@
         pass: '',
         url: 'http://localhost:8200/user/login?_format=json',
         url2: 'http://localhost:8200/oauth/token',
-        // urlLogout: 'http://example.com/user/logout?_format=json',
         statusCheck: true,
       }
     },

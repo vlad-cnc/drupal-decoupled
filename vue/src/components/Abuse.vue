@@ -3,7 +3,6 @@
     <div class="article-preview" v-for="article in responseArticle">
       <div>
         <div class="article-image">
-          <img :src="findImage(article.field_image)"/>
           <img :src="api+article.field_image"/>
         </div>
         <h3 class="article-title">{{article.Test}}</h3>
