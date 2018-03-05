@@ -12,7 +12,7 @@
       </div>
       <div class="field">
         <label>Vocabulary</label><br/>
-        <select @click="CheckType" id="type-select" v-model="termVocabulary" >
+        <select id="type-select" v-model="termVocabulary" >
           <option selected disabled>Pick a vocabulary</option>
           <option  v-for="vocab in vocabularies" :data-type="vocab.attributes.vid">
             {{vocab.attributes.name}}
@@ -30,26 +30,32 @@
     data() {
       return {
         url: 'http://localhost:8200/jsonapi/taxonomy_vocabulary/taxonomy_vocabulary',
+        urlPost: 'http://localhost:8200/jsonapi/taxonomy_term/',
         vocabularies: {},
-        termName: '',
-        termDescription: '',
+        termName: "",
+        termDescription: "",
+        responsePost: "",
         termVocabulary: 'Pick a vocabulary',
         jsonData: {
-          data:{
+          data: {
             type: "",
             attributes: {
+              langcode: "en",
               name: "",
-              description: ""
+              description: "",
+              weight: "0"
             }
           }
         },
       }
     },
     methods: {
-      AddTerm() {
-        axios.post(this.url,{
 
-        }, {
+      // Create a term
+      AddTerm() {
+        let data = JSON.stringify(this.jsonData);
+        let targetVocab = this.termVocabulary.replace(" ", "_").toLowerCase();
+        axios.post(this.urlPost + targetVocab + "?_format=json",data , {
           headers: {
             "Accept": "application/vnd.api+json",
             "Content-Type": "application/vnd.api+json",
@@ -57,15 +63,9 @@
           }
         })
           .then(response => {
-            this.vocabularies = response.data.data;
+            this.responsePost = response.data;
 
           });
-      },
-
-      CheckType() {
-//        let type = $('.type-select option:selected').attr('data-type');
-//        let type = getElementById('type-select')
-        console.log(this);
       },
     },
     created: function () {
