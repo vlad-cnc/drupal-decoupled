@@ -16,7 +16,6 @@ export const store = new Vuex.Store({
     },
   },
 
-
   mutations: {
     setSessionData(newSessionData, payload) {
 

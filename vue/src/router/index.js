@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Taxonomy from '@/components/Taxonomy'
 import Abuse from '@/components/Abuse'
+import ArticleCreation from '@/components/ArticleCreation'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/abuse',
       name: 'Abuse',
       component: Abuse
+    },
+    {
+      path: '/article',
+      name: 'Article',
+      component: ArticleCreation
     }
   ]
 })

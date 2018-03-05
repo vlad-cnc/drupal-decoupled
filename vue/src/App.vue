@@ -7,6 +7,7 @@
         <li><router-link :to="{ path: '/' }">Log In</router-link></li>
         <li><router-link :to="{ path: '/taxonomy' }">Taxonomy</router-link></li>
         <li><router-link :to="{ path: '/abuse' }">Abuse</router-link></li>
+        <li><router-link :to="{ path: '/article' }">Create Article</router-link></li>
       </ul>
     </header>
     <main>
@@ -21,6 +22,7 @@
   import axios from 'axios'
   import Login from "./components/Login";
   import Taxonomy from "./components/Taxonomy";
+  import ArticleCreation from "./components/ArticleCreation"
   import Vue from 'Vue'
   import Vuex from 'vuex'
   Vue.use(Vuex);
@@ -28,7 +30,9 @@
   export default {
     components: {
       Taxonomy,
-      Login},
+      Login,
+      ArticleCreation
+    },
     data () {
       return {
 

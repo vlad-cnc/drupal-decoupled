@@ -7,11 +7,11 @@
     <label>Add a body:</label>
     <input type="text" name="body" v-model="articleData.data.attributes.body.value"/><br/>
     <button v-on:click="CreateArticle">Create Article</button>
-    <button @click="setSessionData(sessionData.userName)">/Kaman</button>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "article-creation",
     data() {
@@ -34,9 +34,13 @@
     methods: {
       // Article creation
       CreateArticle(){
+        // Convert object to JSON
         let articleData = JSON.stringify(this.articleData);
-        let authorization = "Bearer "+this.accessToken;
 
+        // Get the access token from the cookie
+        let authorization = "Bearer "+ this.$cookie.get('session_token');
+
+        // Use axios to make a post request
         axios.post(this.articleUrl, articleData, {
           headers: {
             "Accept": "application/vnd.api+json",

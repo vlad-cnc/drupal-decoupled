@@ -80,7 +80,6 @@
       })
         .then(response => {
           this.vocabularies = response.data.data;
-
         });
     }
 
